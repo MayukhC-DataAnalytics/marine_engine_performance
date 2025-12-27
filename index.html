@@ -3,148 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalyst Labs | Marine ECR</title>
+    <title>Catalyst Labs | Marine Engineering Insights</title>
     <style>
+        /* Marine Engineering Theme Colors */
         :root {
-            --panel-bg: #1a1d23;
-            --screen-bg: #0d1117;
-            --neon-blue: #00f2ff; /* Radar Cyan */
-            --neon-green: #39ff14; /* Sensor Green */
-            --metal-gray: #4e545c;
-            --text-main: #e6edf3;
+            --navy: #0a192f;
+            --ocean: #112240;
+            --highlight: #64ffda;
+            --text-gray: #8892b0;
+            --white: #e6f1ff;
         }
 
         body { 
-            font-family: 'Courier New', Courier, monospace; /* Technical font */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
-            background-color: #05070a;
-            background-image: radial-gradient(circle at 50% 50%, #1a1d23 0%, #05070a 100%);
-            color: var(--text-main);
+            background: linear-gradient(135deg, var(--navy) 0%, #020c1b 100%);
+            color: var(--white);
+            min-height: 100vh;
         }
 
-        /* Top Left Header */
-        .header-branding {
-            padding: 20px;
-            border-bottom: 2px solid var(--metal-gray);
-            background: linear-gradient(90deg, #161b22 0%, transparent 100%);
+        /* Top Header Branding */
+        header {
+            padding: 20px 50px;
+            background: rgba(10, 25, 47, 0.8);
+            border-bottom: 1px solid var(--ocean);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .brand-name { 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: var(--neon-blue); 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin: 0;
-        }
+        .brand h1 { margin: 0; font-size: 24px; color: var(--highlight); letter-spacing: 2px; }
+        .brand p { margin: 0; font-size: 12px; color: var(--text-gray); }
 
-        .developer-name { 
-            font-size: 14px; 
-            color: var(--text-main); 
-            opacity: 0.8;
-            margin-top: 5px;
-        }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 
-        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        h2 { border-left: 4px solid var(--highlight); padding-left: 15px; color: var(--white); }
 
-        /* Dashboard "Screen" Frame */
-        .ecr-monitor { 
-            border: 10px solid var(--metal-gray);
-            border-radius: 8px;
-            background: var(--screen-bg);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-            position: relative;
+        /* Fix Dashboard Size: Large and Responsive */
+        .dashboard-container { 
+            position: relative; 
             width: 100%;
-            height: 850px; /* Increased height so it's not short */
+            height: 800px; /* Increased height */
+            background: var(--ocean);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
             margin-bottom: 40px;
         }
 
-        .ecr-monitor iframe { width: 100%; height: 100%; border: none; }
+        .dashboard-container iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
 
-        /* Action Panel for Links & Downloads */
-        .control-panel {
+        /* Interactive Buttons */
+        .action-area {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
+            margin-top: 30px;
         }
 
-        .panel-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--metal-gray);
+        .card {
+            background: var(--ocean);
             padding: 20px;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            text-align: center;
         }
 
-        .panel-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--neon-blue);
+        .card:hover {
+            border-color: var(--highlight);
+            transform: translateY(-5px);
         }
-
-        .panel-card h3 { color: var(--neon-blue); margin-top: 0; font-size: 18px; }
 
         .btn {
             display: inline-block;
-            margin-top: 15px;
+            background: transparent;
+            color: var(--highlight);
+            border: 1px solid var(--highlight);
             padding: 10px 20px;
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
+            border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
+            margin-top: 10px;
             transition: 0.3s;
-            text-transform: uppercase;
-            font-size: 12px;
         }
 
         .btn:hover {
-            background: var(--neon-blue);
-            color: black;
-            box-shadow: 0 0 10px var(--neon-blue);
+            background: rgba(100, 255, 218, 0.1);
         }
 
-        .btn-download { border-color: var(--neon-green); color: var(--neon-green); }
-        .btn-download:hover { background: var(--neon-green); color: black; box-shadow: 0 0 10px var(--neon-green); }
-
+        footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div class="header-branding">
-        <div class="brand-name">Catalyst Labs</div>
-        <div class="developer-name">Developer: Mayukh Chakraborty</div>
-    </div>
+    <header>
+        <div class="brand">
+            <h1>CATALYST LABS</h1>
+            <p>Developer: Mayukh Chakraborty</p>
+        </div>
+    </header>
 
-    <div class="main-container">
-        
-        <div class="ecr-monitor">
-            <iframe src="https://lookerstudio.google.com/s/rluS6pgBUAw" allowfullscreen></iframe>
+    <div class="container">
+        <h2>Marine Engineering Analytics Dashboard</h2>
+        <p style="color: var(--text-gray)">Interactive data visualization for offshore performance and mechanical diagnostics.</p>
+
+        <div class="dashboard-container">
+            <iframe src="https://lookerstudio.google.com/embed/reporting/b64d922c-b6d5-456e-a8c0-7eafd6c38a4d/page/9fqjF" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
         </div>
 
-        <div class="control-panel">
-            
-            <div class="panel-card">
-                <h3>[ SYSTEM_LOG: SQL_QUERIES ]</h3>
-                <p>Access database transformation scripts and backend logic.</p>
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/tree/main/sql" class="btn">Access SQL Folder</a>
+        <div class="action-area">
+            <div class="card">
+                <h3>SQL Logic</h3>
+                <p>View the queries used to transform the raw marine data.</p>
+                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/tree/main/sql" class="btn">Source Code</a>
             </div>
 
-            <div class="panel-card">
-                <h3>[ DATA_SOURCE: REPOSITORY ]</h3>
-                <p>View raw data files stored in the GitHub repository.</p>
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/tree/main/data" class="btn">View Datasets</a>
+            <div class="card">
+                <h3>Raw Dataset</h3>
+                <p>Access the full CSV dataset used in this analysis.</p>
+                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/tree/main/data" class="btn">View Data</a>
             </div>
 
-            <div class="panel-card">
-                <h3>[ EXPORT: RAW_DATA ]</h3>
-                <p>Download the marine engineering dataset (CSV format).</p>
-                <a href="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data/your_file.csv" class="btn btn-download">Download CSV</a>
+            <div class="card">
+                <h3>Direct Download</h3>
+                <p>Download the .csv file for your own analysis.</p>
+                <a href="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data/yourfile.csv" class="btn" download>Download CSV</a>
             </div>
-
         </div>
     </div>
+
+    <footer>
+        &copy; 2024 Catalyst Labs | Mayukh Chakraborty
+    </footer>
 
 </body>
 </html>
