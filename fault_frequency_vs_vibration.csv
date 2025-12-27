@@ -1,0 +1,8 @@
+"fault_description","occurrence_count","avg_total_vibration","avg_oil_temp","avg_oil_pressure"
+"HIGH EXHAUST TEMP","519","0.1573","80.21","3.52"
+"FUEL INJECTION ISSUE","509","0.1611","79.84","3.47"
+"CYLINDER IMBALANCE","499","0.5612","80.18","2.00"
+"OIL PRESSURE DROP","499","0.1619","95.04","1.98"
+"LOW SCAVENGE PRESSURE","498","0.1591","79.76","3.52"
+"VIBRATION X-AXIS ANAMOLY","488","0.1594","79.96","3.50"
+"TURBOCHARGER FAULT","481","0.7521","80.12","3.46"
